@@ -20,7 +20,14 @@ interface Favorito{
 })
 export class DinamicosComponent  {
   @ViewChild('miFormulario') miFormulario!:NgForm;
-
+  nuevoJuego:string=''; 
+  persona:Persona = {
+    nombre:'',
+    favoritos:[
+      {id:1, nombre:'Metal Gear'},
+      {id:2, nombre:'God of war'}
+    ]
+  }
 
   guardar(){
     console.log(this.miFormulario.controls)
@@ -31,5 +38,17 @@ export class DinamicosComponent  {
                 && this.miFormulario.controls.nombre.touched; 
     return val; 
   }
-
+  borrar(i:number){
+    this.persona.favoritos.splice(i,1); 
+  }
+  agregar(){
+    console.log("<d")
+    const lastId = this.persona.favoritos[this.persona.favoritos.length-1].id;  
+    const nuevoFavorito = {
+      id:lastId +1,
+      nombre: this.nuevoJuego
+    }
+    this.persona.favoritos.push({... nuevoFavorito}); 
+    this.nuevoJuego=''; 
+  }
 }
