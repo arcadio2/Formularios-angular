@@ -1,0 +1,48 @@
+<h2>Template: <small>Dinámicos</small></h2>
+
+<hr>
+
+<form #miFormulario="ngForm"  (ngSubmit)="guardar()" autocomplete="off">
+    <!--Nombre-->
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Nombre</label>
+        <div class="col-sm-9">
+            <input class="form-control" ngModel name="nombre"
+                placeholder="Nombre de la persona" required>
+        </div>
+        <span class="form-text text-danger" 
+                *ngIf="nombreValido()">
+            Este campoe es obligatorio
+        </span>
+    </div>
+    <!--Agregar favorito-->
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Agregar</label>
+        <div class="col-sm-9">
+            <div class="input-group">
+                <input class="form-control" ngModel name="agregar"
+                    placeholder="Agregar juego favorito" required>
+                <button class="btn btn-outline-primary" type="button">
+
+                </button>
+            </div>
+        </div>
+        
+    </div>
+    <!--Lista de juegos favoritos-->
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Favoritos</label>
+        <div class="col-sm-9">
+            <input class="form-control mb-1" >
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="button" class="btn btn-primary float-end" 
+                    (click)="guardar()" [disabled]="miFormulario.invalid">
+                Guardar
+            </button>
+        </div>
+    </div>
+</form>
