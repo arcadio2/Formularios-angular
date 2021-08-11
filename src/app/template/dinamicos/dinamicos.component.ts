@@ -42,8 +42,13 @@ export class DinamicosComponent  {
     this.persona.favoritos.splice(i,1); 
   }
   agregar(){
-    console.log("<d")
-    const lastId = this.persona.favoritos[this.persona.favoritos.length-1].id;  
+    let lastId:number = this.persona.favoritos[this.persona.favoritos.length-1]?.id; 
+    if(lastId){
+      lastId = lastId;  
+    }else{
+      lastId = 0; 
+    }
+    console.log(lastId); 
     const nuevoFavorito = {
       id:lastId +1,
       nombre: this.nuevoJuego
